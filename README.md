@@ -1,4 +1,4 @@
-# backstage-poc
+# Backstage POC
 
 Links
 https://github.com/guymenahem/how-to-devops-tools/tree/main/backstage
