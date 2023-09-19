@@ -1,0 +1,11 @@
+ingress:
+  enabled: true
+
+service:
+  ports:
+    backend: 7007
+
+backstage:
+  extraEnvVars:
+    - name: APP_CONFIG_backend_baseUrl
+      value: http://localhost

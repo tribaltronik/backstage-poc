@@ -5,7 +5,13 @@ build:
 	yarn build:backend
 	docker image build . -f packages/backend/Dockerfile --tag backstage:1.0.0
 	kind load docker-image backstage:1.0.0 --name backstage
-	
+
+helm-install:
+	helm repo add backstage https://backstage.github.io/charts
+	helm upgrade -i backstage backstage/backstage --namespace backstage --create-namespace -f kubernetes/backstage-values.yaml
+
+helm-uninstall:
+	helm uninstall backstage --namespace backstage
 
 ingress:
     # Install Ingress Nginx
