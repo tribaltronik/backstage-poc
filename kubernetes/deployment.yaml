@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backstage
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backstage
+  template:
+    metadata:
+      labels:
+        app: backstage
+    spec:
+      containers:
+        - name: backstage
+          imagePullPolicy: Never
+          image: backstage:1.0.0
+          ports:
+            - containerPort: 7007
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: backstage-service
+spec:
+  selector:
+    app: backstage
+  ports:
+    - port: 7007
