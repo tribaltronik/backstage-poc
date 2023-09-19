@@ -1,13 +1,6 @@
 create: # Create cluster
 	kind create cluster --config kubernetes/kind_config.yaml
 
-build:
-	yarn build:backend
-	docker image build . -f packages/backend/Dockerfile --tag backstage:1.0.0
-	kind load docker-image backstage:1.0.0 --name backstage
-
-
-
 ingress:
     # Install Ingress Nginx
 	kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml
@@ -15,6 +8,11 @@ ingress:
 	--for=condition=ready pod \
 	--selector=app.kubernetes.io/component=controller \
 	--timeout=90s
+
+build:
+	yarn build:backend
+	docker image build . -f packages/backend/Dockerfile --tag backstage:1.0.0
+	kind load docker-image backstage:1.0.0 --name backstage
 
 deploy:
 	kubectl apply -f kubernetes/bs-deployment.yaml
@@ -24,6 +22,7 @@ all-local:
 	$(MAKE) create
 	$(MAKE) ingress
 	$(MAKE) build
+	$(MAKE) deploy
 
 helm-install:
 	helm repo add backstage https://backstage.github.io/charts
