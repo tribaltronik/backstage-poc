@@ -19,5 +19,3 @@ nodes:
         protocol: TCP
   - role: worker
     image: kindest/node:v1.25.3
-  - role: worker
-    image: kindest/node:v1.25.3

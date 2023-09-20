@@ -15,6 +15,7 @@ build:
 	kind load docker-image backstage:1.0.0 --name backstage
 
 deploy:
+	@echo "Deploy"
 	kubectl apply -f kubernetes/bs-deployment.yaml
 	kubectl apply -f kubernetes/bs-ingress.yaml
 
