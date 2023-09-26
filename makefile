@@ -9,6 +9,10 @@ ingress:
 	--selector=app.kubernetes.io/component=controller \
 	--timeout=90s
 
+create-access:
+	kubectl apply -f kubernetes/ClusterRoleBinding.yaml
+	kubectl apply -f kubernetes/service-account-token.yaml
+
 helm-operator:
     # Install Helm Operator
 	kubectl create namespace flux --dry-run=client -o yaml | kubectl apply -f -
@@ -17,8 +21,8 @@ helm-operator:
     --namespace flux \
     --set helm.versions=v3
 
-instal-helmrelease:
-	kubectl apply -f kubernetes/helm-release.yamlyaen
+install-helmrelease:
+	kubectl apply -f kubernetes/helm-release.yaml
 
 build:
 	yarn tsc

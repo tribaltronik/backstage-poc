@@ -7,8 +7,7 @@ metadata:
   description: demo
   annotations:
     backstage.io/kubernetes-id: demo
-    backstage.io/kubernetes-label-selector: demo
 spec:
-  type: website
+  type: service
   lifecycle: experimental
   owner: guests
