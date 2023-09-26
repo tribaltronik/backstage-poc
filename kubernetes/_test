@@ -1,0 +1,9 @@
+curl --location --request POST 'localhost:7007/api/kubernetes/services/demo' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "entity": {
+        "metadata": {
+            "name": "demo"
+        }
+    }
+}'

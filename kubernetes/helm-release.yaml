@@ -1,0 +1,14 @@
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: demo
+spec:
+  rollback:
+    enable: true
+  chart:
+    repository: https://weekndcn.github.io/charts
+    version: 0.1.2
+    name: demo
+  values:
+    image:
+      repository: nginx

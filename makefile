@@ -9,8 +9,22 @@ ingress:
 	--selector=app.kubernetes.io/component=controller \
 	--timeout=90s
 
+helm-operator:
+    # Install Helm Operator
+	kubectl create namespace flux --dry-run=client -o yaml | kubectl apply -f -
+	helm repo add fluxcd https://charts.fluxcd.io
+	helm upgrade -i helm-operator fluxcd/helm-operator \
+    --namespace flux \
+    --set helm.versions=v3
+
+instal-helmrelease:
+	kubectl apply -f kubernetes/helm-release.yamlyaen
+
 build:
+	yarn tsc
 	yarn build:backend
+
+build-image:
 	docker image build . -f packages/backend/Dockerfile --tag backstage:1.0.0
 	kind load docker-image backstage:1.0.0 --name backstage
 
@@ -22,6 +36,7 @@ deploy:
 all-local:
 	$(MAKE) create
 	$(MAKE) ingress
+	$(MAKE) helm-operator
 	$(MAKE) build
 	$(MAKE) deploy
 

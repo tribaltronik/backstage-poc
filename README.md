@@ -26,5 +26,11 @@ make all-helm
 make all-local
 ```
 
-Component
+Component 
 https://github.com/tribaltronik/backstage-poc/blob/main/kubernetes/user-api-component.yaml
+
+
+## Install kubernetes
+
+https://backstage.io/docs/features/kubernetes/installation/#adding-the-kubernetes-frontend-plugin
+
