@@ -37,6 +37,14 @@ deploy:
 	kubectl apply -f kubernetes/bs-deployment.yaml
 	kubectl apply -f kubernetes/bs-ingress.yaml
 
+deploy-demo:
+	kubectl apply -f kubernetes/demo_deployment.yaml
+
+kubernetes-plugin:
+	$(MAKE) create
+	$(MAKE) create-access
+	$(MAKE) deploy-demo
+
 all-local:
 	$(MAKE) create
 	$(MAKE) ingress

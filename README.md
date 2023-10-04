@@ -11,6 +11,11 @@ https://roadie.io/blog/backstage-service-catalog-kubernetes/
 yarn dev
 
 
+## Test Backstage kubernetes plugin
+
+```bash
+make kubernetes-plugin
+```
 ## Option 1 - Install helm chart
 
 https://github.com/backstage/charts/tree/main/charts/backstage
