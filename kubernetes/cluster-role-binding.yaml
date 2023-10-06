@@ -1,12 +1,12 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-  name: default-demo-cluster-admin
-subjects:
-  - kind: ServiceAccount
-    name: default-demo
-    namespace: default
+  name: backstage-cluster-view-rolebinding
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: cluster-admin
+  name: flux-view
+subjects:
+  - kind: ServiceAccount
+    name: default # replace with the name of the SA that your Backstage runs as
+    namespace: default

@@ -21,6 +21,10 @@ helm-operator:
     --namespace flux \
     --set helm.versions=v3
 
+install-flux:
+	kubectl apply -f https://github.com/fluxcd/flux2/releases/latest/download/install.yaml
+
+
 install-helmrelease:
 	kubectl apply -f kubernetes/helm-release.yaml
 

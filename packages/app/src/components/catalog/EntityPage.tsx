@@ -60,7 +60,16 @@ import { ReportIssue } from '@backstage/plugin-techdocs-module-addons-contrib';
 
 import { EntityKubernetesContent } from '@backstage/plugin-kubernetes';
 
-import { EntityFluxHelmReleasesCard } from '@weaveworksoss/backstage-plugin-flux';
+import {
+  EntityFluxGitRepositoriesCard,
+  EntityFluxHelmReleasesCard,
+  EntityFluxOCIRepositoriesCard,
+  EntityFluxKustomizationsCard,
+  EntityFluxHelmRepositoriesCard,
+  EntityFluxDeploymentsCard,
+  EntityFluxSourcesCard,
+  EntityFluxImagePoliciesCard,
+} from '@weaveworksoss/backstage-plugin-flux';
 
 const techdocsContent = (
   <EntityTechdocsContent>
@@ -152,9 +161,16 @@ const serviceEntityPage = (
 
     <EntityLayout.Route path="/kubernetes" title="Kubernetes">
       <EntityKubernetesContent refreshIntervalMs={30000} />
-      <EntityFluxHelmReleasesCard />
     </EntityLayout.Route>
 
+    <EntityLayout.Route path="/weaveworks-flux" title="Weave Flux">
+      <Grid container spacing={3} alignItems="stretch">
+        <Grid item md={12}>
+          <EntityFluxHelmReleasesCard />
+        </Grid>
+
+      </Grid>
+    </EntityLayout.Route>
 
     <EntityLayout.Route path="/ci-cd" title="CI/CD">
       {cicdContent}

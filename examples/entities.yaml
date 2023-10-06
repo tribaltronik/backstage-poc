@@ -11,3 +11,15 @@ spec:
   type: service
   lifecycle: experimental
   owner: guests
+---
+# https://backstage.io/docs/features/software-catalog/descriptor-format#kind-component
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: example-service
+  annotations:
+    backstage.io/kubernetes-id: podinfo
+spec:
+  type: service
+  lifecycle: experimental
+  owner: guests
