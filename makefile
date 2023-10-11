@@ -13,6 +13,12 @@ create-access:
 	kubectl apply -f kubernetes/ClusterRoleBinding.yaml
 	kubectl apply -f kubernetes/service-account-token.yaml
 
+get-token:
+	kubectl get secret default-access-token -o jsonpath='{.data.token}' | base64 --decode
+
+get-url:
+	kubectl cluster-info | head -n 1
+
 helm-operator:
     # Install Helm Operator
 	kubectl create namespace flux --dry-run=client -o yaml | kubectl apply -f -
@@ -27,6 +33,9 @@ install-flux:
 
 install-helmrelease:
 	kubectl apply -f kubernetes/helm-release.yaml
+
+install-podinfo:
+	kubectl apply -f kubernetes/podinfo
 
 build:
 	yarn tsc
@@ -47,6 +56,21 @@ deploy-demo:
 kubernetes-plugin:
 	$(MAKE) create
 	$(MAKE) create-access
+	$(MAKE) get-token
+	$(MAKE) get-url
+	$(MAKE) helm-operator
+	$(MAKE) install-flux
+	$(MAKE) install-podinfo
+	$(MAKE) deploy-demo
+
+kubernetes-flux-plugin:
+	$(MAKE) create
+	$(MAKE) create-access
+	$(MAKE) get-token
+	$(MAKE) get-url
+	$(MAKE) helm-operator
+	$(MAKE) install-flux
+	$(MAKE) install-podinfo
 	$(MAKE) deploy-demo
 
 all-local:
