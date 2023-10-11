@@ -162,7 +162,7 @@ const serviceEntityPage = (
     <EntityLayout.Route path="/kubernetes" title="Kubernetes">
       {/* <EntityKubernetesContent refreshIntervalMs={30000} /> */}
       <Grid container spacing={3} alignItems="stretch">
-        <Grid item md={4} xs={12}>
+        <Grid item md={12} xs={12}>
           <EntityFluxHelmReleasesCard />
         </Grid>
         <Grid item md={12}>
