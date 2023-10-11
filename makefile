@@ -58,20 +58,12 @@ kubernetes-plugin:
 	$(MAKE) create-access
 	$(MAKE) get-token
 	$(MAKE) get-url
-	$(MAKE) helm-operator
-	$(MAKE) install-flux
-	$(MAKE) install-podinfo
 	$(MAKE) deploy-demo
 
-kubernetes-flux-plugin:
-	$(MAKE) create
-	$(MAKE) create-access
-	$(MAKE) get-token
-	$(MAKE) get-url
+flux-plugin:
 	$(MAKE) helm-operator
 	$(MAKE) install-flux
 	$(MAKE) install-podinfo
-	$(MAKE) deploy-demo
 
 all-local:
 	$(MAKE) create

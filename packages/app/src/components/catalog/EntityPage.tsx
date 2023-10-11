@@ -160,7 +160,11 @@ const serviceEntityPage = (
     </EntityLayout.Route>
 
     <EntityLayout.Route path="/kubernetes" title="Kubernetes">
-      {/* <EntityKubernetesContent refreshIntervalMs={30000} /> */}
+      <EntityKubernetesContent refreshIntervalMs={30000} />
+
+    </EntityLayout.Route>
+
+    <EntityLayout.Route path="/weaveworks-flux" title="Weave Flux">
       <Grid container spacing={3} alignItems="stretch">
         <Grid item md={12} xs={12}>
           <EntityFluxHelmReleasesCard />
@@ -170,15 +174,6 @@ const serviceEntityPage = (
         </Grid>
       </Grid>
     </EntityLayout.Route>
-
-    {/* <EntityLayout.Route path="/weaveworks-flux" title="Weave Flux">
-      <Grid container spacing={3} alignItems="stretch">
-        <Grid item md={12}>
-          <EntityFluxHelmReleasesCard />
-        </Grid>
-
-      </Grid>
-    </EntityLayout.Route> */}
 
     <EntityLayout.Route path="/ci-cd" title="CI/CD">
       {cicdContent}
