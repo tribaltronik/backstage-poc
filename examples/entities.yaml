@@ -3,7 +3,7 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: demo
+  name: demo-deployment
   description: demo
   annotations:
     backstage.io/kubernetes-id: demo
@@ -16,7 +16,7 @@ spec:
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: example-service
+  name: demo-helmrelease
   annotations:
     backstage.io/kubernetes-id: podinfo
 spec:
